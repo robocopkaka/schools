@@ -1,0 +1,20 @@
+<div class="schools-search">
+  <h1>Search Schools</h1>
+  <%= form_for(schools_path, method: :get) do  %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], class: 'form-control' %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
+<h1> Search results for <%= params[:query] %> </h1>
+<ol>
+  <% @schools.each do |school| %>
+    <li>
+      <h3>
+        <%= link_to school.school_name, controller: "schools", action: "show", id: school.id%>
+      </h3>
+    </li>
+  <% end %>
+</ol>
