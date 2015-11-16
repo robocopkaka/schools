@@ -13,7 +13,7 @@ class SchoolsController < ApplicationController
 
   def index
   	if params[:query].present?
-      @schools = School.search(params[:query],page: params[:page], per_page: 10, fields: [{school_name: :word_start }, {school_address: :word_start},{location: :word_start}])
+      @schools = School.search(params[:query],page: params[:page], per_page: 10, fields: [{school_name: :word_start }, {school_address: :word_start},{location: :word}])
     else
       @schools = []
     end
@@ -28,6 +28,10 @@ class SchoolsController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+  def all
+    @schools = School.all.paginate(page: params[:page])
   end
 
   private

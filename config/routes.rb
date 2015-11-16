@@ -7,7 +7,15 @@ Rails.application.routes.draw do
 
   get 'search' => 'search#search'
 
-  get 'users/new'
+  get 'signup' => 'users#new'
+
+  get 'login' => 'sessions#new' #path to log in form for creating a new new session, becomes login_path
+
+  post 'login' => 'sessions#create' #path to actually log in, and create a new session for the user
+
+  get 'logout' => 'sessions#destroy' #path to destroy a user session when they log out or after some time
+
+  get 'schools/all'
 
   root 'schools#index'
 

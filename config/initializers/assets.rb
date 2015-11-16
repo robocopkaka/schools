@@ -10,11 +10,4 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( clean-blog.css )
-Rails.application.config.assets.precompile += %w( clean-blog.min.css )
-Rails.application.config.assets.precompile += %w( bootsrap.js )
-Rails.application.config.assets.precompile += %w( bootsrap.min.js )
-Rails.application.config.assets.precompile += %w( clean-blog.js )
-Rails.application.config.assets.precompile += %w( clean-blog.min.js )
-Rails.application.config.assets.precompile += %w( jquery.js )
-Rails.application.config.assets.precompile += %w( jquery.min.js )
+

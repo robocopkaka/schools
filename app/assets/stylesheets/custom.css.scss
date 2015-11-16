@@ -1,6 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+html {
+	overflow-y:scroll;
+}
+
+body{
+	padding-top:0px;
+}
 .sch{
 	border : 15px;
 	padding-bottom: 15em;
@@ -22,4 +30,17 @@
 		text-decoration:none;
 	}
 
+}
+
+.checkbox {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	span {
+		margin-left: 20px;
+		font-weight: normal;
+	}
+}
+#session_remember_me {
+	width: auto;
+	margin-left: 0;
 }

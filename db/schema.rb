@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114160351) do
+ActiveRecord::Schema.define(version: 20151115195955) do
 
   create_table "schools", force: :cascade do |t|
     t.string   "school_name"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20151114160351) do
     t.string   "activation_digest"
     t.string   "password_digest"
     t.datetime "activated_at"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "activated",         default: false
   end
 
 end
