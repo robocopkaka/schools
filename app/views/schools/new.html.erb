@@ -14,6 +14,12 @@
 			<%= f.label :description %>
 			<%= f.text_field :school_description, class: 'form-control' %>
 
+			<%= f.label :location %>
+			<%= f.text_field :location, class: 'form-control' %>
+
+			<%= f.label :category %>
+			<%= f.select(:category, ["Federal", "State", "Private"])  %> <!-- f.select is used to create dropdown lists and has many ways of passing values -->
+
 			<%= f.submit "Post", class: 'btn btn-primary' %>
 		<% end %>
 	</div>

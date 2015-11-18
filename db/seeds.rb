@@ -6,8 +6,9 @@ School.create!(school_name: "kachi", school_address: "somewhere", school_descrip
 	address = Faker::Address.street_address
 	school_location = Faker::Address.state
 	description = Faker::Lorem.sentence(1)
+	website = Faker::Internet.url('schools.com')
 
-	School.create!(school_name: name, school_address: address, school_description: description, location: school_location)
+	School.create!(school_name: name, school_address: address, school_description: description, location: school_location, website: website, category:"private")
 end
 
 

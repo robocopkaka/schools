@@ -5,7 +5,7 @@
      <% @schools.each do |school| %>
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 			  <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-         	 <h2><%= school.school_name %></h2>
+         	 <h2><%= link_to school.school_name, controller:"schools", action:"show", id: school.id %></h2>
           	<p><%= school.school_description%></p>
           	<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->

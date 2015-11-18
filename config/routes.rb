@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'about' => 'static_pages#about'
+
+  get 'contact' => 'static_pages#contact'
+
   get 'schools/new'
 
   get 'schools/edit'
 
-  get 'schools/show'
+  get  'schools/show'
 
   get 'search' => 'search#search'
 
@@ -14,6 +18,12 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create' #path to actually log in, and create a new session for the user
 
   get 'logout' => 'sessions#destroy' #path to destroy a user session when they log out or after some time
+
+  get 'federal' => 'schools#federal_schools'
+
+  get 'state' => 'schools#state_schools'
+
+  get 'private' => 'schools#private_schools'
 
   get 'schools/all'
 
