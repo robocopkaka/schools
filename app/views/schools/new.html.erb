@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-		<%= form_for(@school) do |f| %>
+		<%= form_for(@school, html: {multipart: true}) do |f| %>
 			<%= f.label :name %>
 			<%= f.text_field :school_name, class: 'form-control' %>
 
@@ -19,6 +19,11 @@
 
 			<%= f.label :category %>
 			<%= f.select(:category, ["Federal", "State", "Private"])  %> <!-- f.select is used to create dropdown lists and has many ways of passing values -->
+
+			<span class = "picture">
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+				<%= f.hidden_field :picture_cache %>
+			</span>
 
 			<%= f.submit "Post", class: 'btn btn-primary' %>
 		<% end %>

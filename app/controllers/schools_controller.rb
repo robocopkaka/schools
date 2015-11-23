@@ -16,6 +16,18 @@ class SchoolsController < ApplicationController
   end
 
   def edit
+    @school = School.find_by(id: params[:id])
+  end
+
+  def update
+    @school = School.find_by(id: params[:id])
+    if @school.update_attributes(school_params)
+      flash[:success] = "School edited successfully"
+      @school.update_attributes(approved: false)
+      redirect_to @school
+    else
+      render 'edit'
+    end
   end
 
   def show
@@ -37,7 +49,7 @@ class SchoolsController < ApplicationController
 
   # this action pulls all the federal schools from the schools table
   def federal_schools
-   @schools = School.where(category: "federal").paginate(page: params[:page], per_page:10)
+   @schools = School.where(category: "Federal").paginate(page: params[:page], per_page:10)
   end
 
   # this action pulls all the private schools from the schools table
@@ -53,6 +65,6 @@ class SchoolsController < ApplicationController
   private
 
   def school_params
-  	params.require(:school).permit(:school_name, :school_description, :school_address, :school_image, :location, :category,:website)
+  	params.require(:school).permit(:school_name, :school_description, :school_address, :school_image, :location, :category,:website, :picture)
   end
 end

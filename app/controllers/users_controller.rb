@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	before_action :logged_in_user, only: [:edit, :update]
 	before_action :correct_user, only: [:edit, :update]
+	before_action :admin_user, only: :destroy
 	#renders a page for a user to signup
 	def new
 		@user = User.new
@@ -20,15 +21,26 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@user =  User.find_by(id: params[:id])
 	end
 
 	def show
 	end
 
 	def update
+		@user = User.find_by(id: params[:id])
+		if @user.update_attributes(user_params)
+			flash[:success] = "Profile updated successfully"
+			redirect_to root_url
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		User.find(params[:id]).destroy
+  		flash[:success] = "User deleted"
+  		redirect_to root_url #do an index page for users that only the admin can see, and delete as need be
 	end
 
 	private
@@ -52,4 +64,9 @@ class UsersController < ApplicationController
 		@user = User.find_by(id: params[:id])
 		redirect_to(root_url) unless current_user?(@user)
 	end
+
+	 #check if the current user is an admin user
+	 def admin_user
+  		redirect_to(root_url) unless current_user.admin?		
+  	end
 end
