@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'admin' => 'school_admins#index'
+
+  get 'approve' => 'school_admins#approve'
+
   get 'about' => 'static_pages#about'
 
   get 'contact' => 'static_pages#contact'

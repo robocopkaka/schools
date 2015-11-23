@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
 	#this generates a random new token, that will be used for activation and remember tokens
 	def User.new_token
-		Securerandom.urlsafe_base64
+		SecureRandom.urlsafe_base64
 	end
 
 	#creates encrypted digests/strings using the Bcrypt gem
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 	end
 
 	#this removes the remember_digest from the database, hence forgetting the user. It deletes the session and cookies variables that have been created
-	def forget(user)
+	def forget
 		update_attribute(:remember_digest, nil)
 	end
 	#this is going to be used to check if the remember_token, when hashed, is the same as the remember_digest for a particular user

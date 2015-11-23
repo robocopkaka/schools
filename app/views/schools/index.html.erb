@@ -10,13 +10,27 @@
   </div>
 </div>
 
-<h1> Search results for <%= params[:query] %> </h1>
-<ol>
-  <% @schools.each do |school| %>
-    <li>
-      <h3>
-        <%= link_to school.school_name, controller: "schools", action: "show", id: school.id%>
-      </h3>
-    </li>
+<div class="container">
+   <div class="container marketing">
+     <div class="row row-centered">
+        <h1> Search results for <%= params[:query] %> </h1>
+        <% @schools.each do |school| %>
+          <% if school.approved? %>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2><%= link_to school.school_name, controller:"schools", action:"show", id: school.id %></h2>
+            <p><%= school.school_description%></p>
+            <p><%= school.category%></p>
+            <% if !school.website.nil? %>
+              <%= link_to "Visit website", school.website %>
+            <% else %>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <%end %>
+        </div><!-- /.col-lg-4 -->
+    <% end %>
   <% end %>
-</ol>
+  </div>
+  <%= will_paginate @schools %>
+  </div>
+  </div>
+

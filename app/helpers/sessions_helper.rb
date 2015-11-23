@@ -34,13 +34,29 @@ module SessionsHelper
 	#to generate a remember_token encrypt it, and save the encrypted value in the remember_digest field for the user
 	def remember(user)
 		user.remember
-		cookies.signed.permanent[user_id] = user.id
-		cookies.signed.permanent[remember_token] = user.remember_token
+		cookies.signed.permanent[:user_id] = user.id
+		cookies.signed.permanent[:remember_token] = user.remember_token
 	end
 
 	def forget(user)
 		user.forget
 		cookies.delete(:user_id)
 		cookies.delete(:remember_token)
+	end
+
+	#this checks if the user trying to do something is actually the logged in user, returns true if it is
+	def current_user?(user)
+		current_user == user
+	end
+
+	#this redirects the user to the page he was on before or to the root_url
+	def redirect_back_or(default)
+		redirect_to(session[:forwarding_url] || default)
+		session.delete(:forwarding_url)
+	end
+
+	#this stores the location of the page the user was on
+	def store_location
+		session[:forwarding_url] = request.url if request.get?
 	end
 end

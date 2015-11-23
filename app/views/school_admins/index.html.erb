@@ -1,0 +1,25 @@
+<% provide(:title, "Admin") %>
+
+  <h1>All Schools</h1>
+  <div class="container">
+   <div class="container marketing">
+     <div class="row row-centered">
+     <% @schools.each do |school| %>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+           <h2><%= link_to school.school_name, controller:"schools", action:"show", id: school.id %></h2>
+            <p><%= school.school_description%></p>
+            <p><%= school.category%></p>
+            <% if !school.approved? %>
+            <p> <%= link_to "Approve", controller: "school_admins", action: "approve", id: school.id %></p>
+            <% else %> <!-- end for approve button if block -->
+            <p> <%= link_to "Remove", controller: "school_admins", action: "approve", id: school.id %></p>
+            <% end %>
+        </div><!-- /.col-lg-4 -->
+        <%end %>
+       </div>
+       <%= will_paginate @schools%>
+    </div>
+    </div>
+    <%else %>
+
