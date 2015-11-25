@@ -5,7 +5,7 @@
      <% @schools.each do |school| %>
       <% if school.approved? %>
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			  <%= image_tag school.picture.url if school.picture? %>
+			  <%= image_tag(school.picture_url, :size => "140x140", class: "img-circle")%>
          	 <h2><%= link_to school.school_name, controller:"schools", action:"show", id: school.id %></h2>
           	<p><%= school.school_description%></p>
           	<p><%= school.category%></p>

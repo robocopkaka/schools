@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get  'schools/show'
 
+  get 'schools/all'
+
   get 'search' => 'search#search'
 
   get 'signup' => 'users#new'
@@ -28,8 +30,6 @@ Rails.application.routes.draw do
   get 'state' => 'schools#state_schools'
 
   get 'private' => 'schools#private_schools'
-
-  get 'schools/all'
 
   root 'schools#index'
 

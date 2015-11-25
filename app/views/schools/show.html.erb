@@ -1,6 +1,18 @@
 <p class = "show_schools">
   <strong>Name:</strong>
-  <%= @school.school_name %>, <%= @school.school_address %>,<%= @school.school_description %>, <%= @school.location %>, <%=@school.category %>
+  <% if @school.picture? %>
+  <%= render 'shared/carousel' %>
+  	<div class = "container">
+	    <div class="starter-template">
+       		 <h1><%= @school.school_name %></h1>
+        	<p class="lead"><%= @school.school_description %></p>
+        	<p class="lead"> <%= @school.school_address %></p>
+        	<p class = "lead"> <%=@school.category %> </p>
+      </div>
+    </div>
+  <% else %>
+  	<%= @school.school_name %>, <%= @school.school_address %>,<%= @school.school_description %>, <%= @school.location %>, <%=@school.category %>
+  <% end %>
 </p>
 
 

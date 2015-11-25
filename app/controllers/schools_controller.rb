@@ -1,5 +1,6 @@
 require 'will_paginate/array'
 class SchoolsController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update]
   def new
   	@school = School.new
   end
