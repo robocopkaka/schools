@@ -15,5 +15,7 @@
   <% end %>
 </p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@school.latitude}%2C#{@school.longitude}" %>
+
 
 <%= link_to "<- Back", schools_path %>

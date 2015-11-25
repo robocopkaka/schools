@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123181906) do
+ActiveRecord::Schema.define(version: 20151125174051) do
 
   create_table "schools", force: :cascade do |t|
     t.string   "school_name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20151123181906) do
     t.string   "website"
     t.boolean  "approved"
     t.string   "picture"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "schools", ["location"], name: "index_schools_on_location"

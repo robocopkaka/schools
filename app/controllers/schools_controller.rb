@@ -37,9 +37,12 @@ class SchoolsController < ApplicationController
 
   def index
   	if params[:query].present?
-      @schools = School.search(params[:query],page: params[:page], per_page: 10, fields: [{school_name: :word_start }, {school_address: :word_start},{location: :word}])
+     #@schools = School.search(params[:query],page: params[:page], per_page: 10, fields: [{school_name: :word_start }, {school_address: :word_start},{location: :word}])
+    @schools = School.near(params[:query], 100) #the second option will be the distance in miles. You can  change the dafault to km. Find out later
     else
-      @schools = []
+      #@schools = []
+      @schools = School.search(params[:query],page: params[:page], per_page: 10, fields: [{school_name: :word_start }, {school_address: :word_start},{location: :word}])
+
     end
   end
 

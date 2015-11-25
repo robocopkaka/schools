@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 	def logged_in_user
 		unless logged_in?
 			store_location #this stores the url of the page the user was on when they tried to perform an action that required them logging in first
-			flash[:danger] = "Please log in"
+			flash.now[:danger] = "Please log in"
 			redirect_to login_url
 		end
 	end

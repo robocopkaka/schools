@@ -1,4 +1,5 @@
 
+
 class School < ActiveRecord::Base
 
 	validates :school_name, presence:true, length: {minimum:5}
@@ -12,6 +13,13 @@ class School < ActiveRecord::Base
 	searchkick word_start: [:school_name]
 
 	CATEGORIES = ["Federal", "State", "Private"]
+
+	geocoded_by :address
+	after_validation :geocode
+
+	def address
+		[school_address, location].compact.join(',') #.compact removes nil arguments/ members from the array
+	end
 
 end
 

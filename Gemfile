@@ -33,6 +33,9 @@ gem 'elasticsearch-model', '0.1.8'
 gem 'elasticsearch-rails', '0.1.8'
 gem 'searchkick'
 
+#geocoder gem(s)
+gem 'geocoder'
+
 #bcrypt gem for password hashing
 gem 'bcrypt','~> 3.1.9'
 
