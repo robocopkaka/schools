@@ -1,5 +1,5 @@
 class SchoolAdminsController < ApplicationController
-	before_action :admin_user, only: [:index, :approve]
+	before_action :admin_user, only: [:index, :approve,:destroy]
   def index
   	@user = User.find_by(id: params[:id])
   	if current_user.admin?

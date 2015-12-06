@@ -13,6 +13,7 @@ class School < ActiveRecord::Base
 	searchkick word_start: [:school_name]
 
 	CATEGORIES = ["Federal", "State", "Private"]
+	STATES = ["Abia", "Lagos", "Fct", "Adamawa", "Benue", "Borno"]
 
 	geocoded_by :address
 	after_validation :geocode

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper #this allows me use all the methods in the sessions helper in all my controllers
 
+   
   private
   def logged_in_user
   	unless logged_in?
@@ -12,4 +13,6 @@ class ApplicationController < ActionController::Base
   		redirect_to login_url #remember to create a login route after adding a create method to the sessions controller
   	end
   end
+
+   #check if the current user is an admin user
 end

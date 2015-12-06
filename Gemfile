@@ -36,6 +36,22 @@ gem 'searchkick'
 #geocoder gem(s)
 gem 'geocoder'
 
+#Google Places API gem
+gem 'google_places'
+
+#jquery-ui gem
+gem 'jquery-ui-rails', '~>4.2'
+
+#Google maps autocomplete gem
+#gem 'gmaps-autocomplete-rails'
+
+#gem 'geocomplete_rails'
+#certifid gem for ssl error
+gem 'certified'
+
+# Google API Client
+gem 'google-api-client'
+
 #bcrypt gem for password hashing
 gem 'bcrypt','~> 3.1.9'
 

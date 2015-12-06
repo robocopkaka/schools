@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125174051) do
+ActiveRecord::Schema.define(version: 20151127075533) do
 
   create_table "schools", force: :cascade do |t|
     t.string   "school_name"
     t.string   "school_image"
     t.text     "school_description"
     t.text     "school_address"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "location"
     t.string   "category"
     t.string   "website"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20151125174051) do
     t.string   "picture"
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "deleted",            default: false
   end
 
   add_index "schools", ["location"], name: "index_schools_on_location"

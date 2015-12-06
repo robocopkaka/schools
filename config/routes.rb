@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   get 'schools/all'
 
+  get 'schools/states'
+
+  get 'nearby_schools' => 'schools#schools_near_you'
+
+  get 'school_admins/destroy'
+
   get 'search' => 'search#search'
 
   get 'signup' => 'users#new'

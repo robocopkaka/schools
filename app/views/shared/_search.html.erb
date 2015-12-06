@@ -1,0 +1,6 @@
+<div class="row">
+  <%= form_for(schools_path, method: :get) do  %>
+      <%= text_field_tag :query, params[:query], class: 'search-input' %>
+      <%= submit_tag 'Search', class: 'Icon Icon--search nav-search' %>
+  <% end %>
+</div>

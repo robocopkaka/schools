@@ -1,23 +1,6 @@
 <h1>Federal schools</h1>
-<div class="container">
-   <div class="container marketing">
-     <div class="row row-centered">
-     <% @schools.each do |school| %>
-      <% if school.approved? %>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			  <%= image_tag(school.picture_url, :size => "140x140", class: "img-circle")%>
-         	 <h2><%= link_to school.school_name, controller:"schools", action:"show", id: school.id %></h2>
-          	<p><%= school.school_description%></p>
-          	<p><%= school.category%></p>
-            <% if !school.website.nil? %>
-              <%= link_to "Visit website", school.website %>
-            <% else %>
-          	<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <%end %>
-        </div><!-- /.col-lg-4 -->
-         <% end %>
-        <%end %>
-       </div>
-        <%= will_paginate @schools%>
-    </div>
-    </div>
+<section>
+  Want to find Federal schools in states, select a state from the dropdown
+</section>
+
+<%= render 'schools/school' %>

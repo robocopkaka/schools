@@ -1,0 +1,12 @@
+<div class = "row row-centered">
+<%= render 'schools/description' %>
+    <div class = "no-picture-center">
+     <%= image_tag("smokeFreeSchools_issue_1337207441.jpg") %>
+    </div>
+</div>
+<div class="container">
+	<div class="starter-template"> 
+     <p class="lead"> Address: <%= @school.school_address %>, <%= @school.location %> </p>
+     <p class="lead"> Category: <%= @school.category %> </p>
+    </div>
+</div>

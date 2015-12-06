@@ -28,7 +28,7 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+              <li><%= render 'shared/search' %></li>
               <li><%= link_to "Add New School", new_school_path %></li>
               <% if logged_in? %>
                 <li class = "dropdown">

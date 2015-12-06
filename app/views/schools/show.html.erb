@@ -1,21 +1,29 @@
 <p class = "show_schools">
-  <strong>Name:</strong>
-  <% if @school.picture? %>
-  <%= render 'shared/carousel' %>
-  	<div class = "container">
-	    <div class="starter-template">
-       		 <h1><%= @school.school_name %></h1>
-        	<p class="lead"><%= @school.school_description %></p>
-        	<p class="lead"> <%= @school.school_address %></p>
-        	<p class = "lead"> <%=@school.category %> </p>
-      </div>
-    </div>
-  <% else %>
-  	<%= @school.school_name %>, <%= @school.school_address %>,<%= @school.school_description %>, <%= @school.location %>, <%=@school.category %>
-  <% end %>
+   <h1 class="school_name"><%= @school.school_name %></h1>
+    <% if !@school.picture_url.nil? %>
+      <%= render 'schools/with_picture' %>
+    <% else %>
+      <%= render 'schools/without_picture' %>
+    <% end %>
 </p>
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@school.latitude}%2C#{@school.longitude}" %>
 
+</br>
 
-<%= link_to "<- Back", schools_path %>
+<%= link_to "Edit", edit_school_path %> | 
+<% if logged_in? %>
+  <% if current_user.admin? %>
+    <%= link_to "Delete", @school, method: :delete, data: {confirm: "Are you sure?"} %> | 
+  <% end %>
+<% end %>
+<%= link_to "Back", schools_path %>
+
+
+   <div class="container marketing">
+     <div class="row row-centered">
+     <h2>Nearby Schools</h2>
+        <%= render 'schools/nearby_schools' %>
+    </div>
+    </div>
+    

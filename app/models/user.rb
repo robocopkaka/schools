@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 	#this is going to be used to check if the remember_token, when hashed, is the same as the remember_digest for a particular user
 	def authenticated?(remember_token)
 		return false if remember_digest.nil?
-		Bcrypt::Password.new(remember_digest).is_password?(remember_token)
+		BCrypt::Password.new(remember_digest).is_password?(remember_token)
 	end
 
 	private
