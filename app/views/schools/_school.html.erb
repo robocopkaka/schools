@@ -17,6 +17,11 @@
             <% else %>
           	<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             <%end %>
+            <% if logged_in? %>
+            <% if current_user.admin? %>
+             <p> <%= link_to "Delete", @school, method: :delete, data: {confirm: "Are you sure?"} %> </p>
+            <% end %>
+            <% end %>
         </div><!-- /.col-lg-4 -->
          <% end %>
         <%end %>

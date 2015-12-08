@@ -13,9 +13,9 @@
             <p><%= school.school_description%></p>
             <p><%= school.category%></p>
             <% if !school.approved? %>
-            <p> <%= link_to "Approve", controller: "school_admins", action: "approve", id: school.id %></p>
+            <p> <%= link_to "Approve", controller: "school_admins", action: "approve", id: school.id %> </p>
             <% else %> <!-- end for approve button if block -->
-            <p> <%= link_to "Remove", controller: "school_admins", action: "approve", id: school.id %></p>
+            <p> <%= link_to "Remove", controller: "school_admins", action: "approve", id: school.id %> </p>
             <% end %>
         </div><!-- /.col-lg-4 -->
         <%end %>

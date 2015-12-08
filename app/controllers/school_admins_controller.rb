@@ -21,6 +21,12 @@ class SchoolAdminsController < ApplicationController
   	end
   end
 
+   def destroy
+    School.find(params[:id]).destroy
+    flash[:success] = "School deleted successfully"
+    redirect_back_or(school)
+  end
+
   private
 
   #confirms an admin user

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class SchoolsController - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-all">#all</a>
+    
+    <li ><a href="#method-i-create">#create</a>
+    
+    <li ><a href="#method-i-destroy">#destroy</a>
+    
+    <li ><a href="#method-i-edit">#edit</a>
+    
+    <li ><a href="#method-i-federal_schools">#federal_schools</a>
+    
+    <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-new">#new</a>
+    
+    <li ><a href="#method-i-private_schools">#private_schools</a>
+    
+    <li ><a href="#method-i-schools_near_you">#schools_near_you</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-state_schools">#state_schools</a>
+    
+    <li ><a href="#method-i-states">#states</a>
+    
+    <li ><a href="#method-i-update">#update</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-SchoolsController">
+  <h1 id="class-SchoolsController" class="class">
+    class SchoolsController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-all" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="all-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all</span>
+  <span class="ruby-ivar">@schools</span><span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;approved == ?&quot;</span>, <span class="ruby-keyword">true</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-identifier">per_page</span><span class="ruby-value">10</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 9</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-ivar">@school</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">school_params</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@school</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;School saved successfully&quot;</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;new&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 59</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-constant">School</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;School deleted successfully&quot;</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-ivar">@school</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-federal_schools" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">federal_schools</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this action pulls all the federal schools from the schools table</p>
+          
+          
+
+          
+          <div class="method-source-code" id="federal_schools-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">federal_schools</span>
+  <span class="ruby-ivar">@lat_lng</span> = <span class="ruby-identifier">cookies</span>[<span class="ruby-value">:lat_lng</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;|&quot;</span>)
+ <span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">near</span>(<span class="ruby-ivar">@lat_lng</span>, <span class="ruby-value">10</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">category</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Federal&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-identifier">per_page</span><span class="ruby-value">10</span><span class="ruby-value">10</span>) <span class="ruby-comment"># to find federal schools near you</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:query</span>].<span class="ruby-identifier">present?</span>
+   <span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:query</span>],<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span>, <span class="ruby-identifier">fields</span><span class="ruby-operator">:</span> [{<span class="ruby-identifier">school_name</span><span class="ruby-operator">:</span> <span class="ruby-value">:word_start</span> }, {<span class="ruby-identifier">school_address</span><span class="ruby-operator">:</span> <span class="ruby-value">:word_start</span>},{<span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-value">:word</span>}])
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@schools</span> = []
+
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+      <span class="ruby-ivar">@school</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-private_schools" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">private_schools</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this action pulls all the private schools from the schools table</p>
+          
+          
+
+          
+          <div class="method-source-code" id="private_schools-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">private_schools</span>
+  <span class="ruby-ivar">@lat_lng</span> = <span class="ruby-identifier">cookies</span>[<span class="ruby-value">:lat_lng</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;|&quot;</span>)
+  <span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">near</span>(<span class="ruby-ivar">@lat_lng</span>, <span class="ruby-value">10</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">category</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Private&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-identifier">per_page</span><span class="ruby-value">10</span><span class="ruby-value">10</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-schools_near_you" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">schools_near_you</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="schools_near_you-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">schools_near_you</span>
+  <span class="ruby-ivar">@lat_lng</span> = <span class="ruby-identifier">cookies</span>[<span class="ruby-value">:lat_lng</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;|&quot;</span>)
+  <span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">near</span>(<span class="ruby-ivar">@lat_lng</span>, <span class="ruby-value">10</span>) <span class="ruby-comment">#the second option will be the distance in miles. You can  change the dafault to km. Find out later</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+   <span class="ruby-ivar">@school</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+   <span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">near</span>([<span class="ruby-ivar">@school</span>.<span class="ruby-identifier">latitude</span>,<span class="ruby-ivar">@school</span>.<span class="ruby-identifier">longitude</span>], <span class="ruby-value">5</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;id != ?&quot;</span>, <span class="ruby-ivar">@school</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-value">4</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-state_schools" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">state_schools</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="state_schools-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">state_schools</span>
+  <span class="ruby-ivar">@schools</span><span class="ruby-ivar">@schools</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">category</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;State&quot;</span>).<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-identifier">per_page</span><span class="ruby-value">10</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-states" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">states</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="states-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">states</span>
+  <span class="ruby-ivar">@client</span> =  <span class="ruby-constant">GooglePlaces</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;AIzaSyADkLxPNSIpS_rAn1T54kUOxBQNla7la9k&quot;</span>)
+  <span class="ruby-ivar">@states</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">spots</span>(<span class="ruby-value">6.507593</span>,<span class="ruby-value">3.3690259</span>, <span class="ruby-value">:types</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;states&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/schools_controller.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@school</span> = <span class="ruby-constant">School</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@school</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">school_params</span>)
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;School edited successfully&quot;</span>
+    <span class="ruby-ivar">@school</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">approved</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>)
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@school</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;edit&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

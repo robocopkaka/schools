@@ -1,7 +1,6 @@
 require 'will_paginate/array'
 class SchoolsController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :admin_user, only: [:destroy, :edit, :update]
   def new
   	@school = School.new
   end
@@ -34,7 +33,7 @@ class SchoolsController < ApplicationController
 
   def show
      @school = School.find_by(id: params[:id])
-     @schools = School.near([@school.latitude,@school.longitude], 5).where("id != ?", @school.id).limit(4)
+     @schools = School.near([@school.latitude,@school.longitude], 10).where("id != ?", @school.id).limit(4)
   end
 
   def schools_near_you
@@ -42,12 +41,12 @@ class SchoolsController < ApplicationController
     @schools = School.near(@lat_lng, 10) #the second option will be the distance in miles. You can  change the dafault to km. Find out later
   end
 
+  #This action currently shows a search field on the index view
   def index
   	if params[:query].present?
      @schools = School.search(params[:query],page: params[:page], per_page: 10, fields: [{school_name: :word_start }, {school_address: :word_start},{location: :word}])
     else
       @schools = []
-
     end
   end
 
@@ -59,9 +58,10 @@ class SchoolsController < ApplicationController
    def destroy
     School.find(params[:id]).destroy
     flash[:success] = "School deleted successfully"
-    redirect_to admin_url
+    redirect_back_or(admin_url)
   end
 
+  # This action returns all approved schools from the database
   def all
     @schools = School.all.where("approved == ?", true).paginate(page: params[:page], per_page:10)
   end
@@ -69,25 +69,44 @@ class SchoolsController < ApplicationController
   # this action pulls all the federal schools from the schools table
   def federal_schools
     @lat_lng = cookies[:lat_lng].split("|")
-   @schools = School.near(@lat_lng, 10).where(category: "Federal").paginate(page: params[:page], per_page:10) # to find federal schools near you
+   @schools = School.near(@lat_lng, 10).where(classification: "Federal").paginate(page: params[:page], per_page:10) # to find federal schools near you
   end
 
 
   # this action pulls all the private schools from the schools table
   def private_schools
     @lat_lng = cookies[:lat_lng].split("|")
-    @schools = School.near(@lat_lng, 10).where(category: "Private").paginate(page: params[:page], per_page:10)
+    @schools = School.near(@lat_lng, 10).where(classification: "Private").paginate(page: params[:page], per_page:10)
   end
 
   def state_schools
-    @schools = School.where(category: "State").paginate(page: params[:page], per_page:10)
+    @schools = School.where(classification: "State").paginate(page: params[:page], per_page:10)
   end
 
+  def primary_schools
+    @schools = School.where(category: "Primary").paginate(page: params[:page], per_page:10)
+  end
+
+  def secondary_schools
+    @schools = School.where(category: "Secondary").paginate(page: params[:page], per_page:10)
+  end
+
+  def primary_and_secondary_schools
+    @schools = School.where(category: "Primary&Secondary").paginate(page: params[:page], per_page:10)
+  end
+
+  def creches
+    @schools = School.where(category: "Creche").paginate(page: params[:page], per_page:10)
+  end
+
+  def universities
+    @schools = School.where(category: "University").paginate(page: params[:page], per_page:10)
+  end   
 
   private
 
   def school_params
-  	params.require(:school).permit(:school_name, :school_description, :school_address, :school_image, :location, :category,:website, :picture)
+  	params.require(:school).permit(:school_name, :school_description, :school_address, :school_image, :location, :category,:website, :picture, :classification)
   end
 
    def admin_user

@@ -11,13 +11,14 @@
 
 </br>
 
-<%= link_to "Edit", edit_school_path %> | 
 <% if logged_in? %>
   <% if current_user.admin? %>
+    <%= link_to "Edit", edit_school_path %> | 
     <%= link_to "Delete", @school, method: :delete, data: {confirm: "Are you sure?"} %> | 
+    <%= link_to "Back", schools_path %>
   <% end %>
 <% end %>
-<%= link_to "Back", schools_path %>
+
 
 
    <div class="container marketing">

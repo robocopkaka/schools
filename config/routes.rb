@@ -37,6 +37,16 @@ Rails.application.routes.draw do
 
   get 'private' => 'schools#private_schools'
 
+  get 'primary' => 'schools#primary_schools'
+
+  get 'secondary' => 'schools#secondary_schools'
+
+  get 'primary_and_secondary' => 'schools#primary_and_secondary_schools'
+
+  get 'universities' => 'schools#universities'
+
+  get 'creches' => 'schools#creches'
+
   root 'schools#index'
 
   resources :schools
