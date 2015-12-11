@@ -14,10 +14,10 @@ class SchoolAdminsController < ApplicationController
 
   	if @school.approved?
   		@school.update_attributes(approved: false)
-  		redirect_to admin_url #refreshes the page
+  		redirect_to :back #refreshes the page
   	else
   		@school.update_attributes(approved: true)
-  		redirect_to admin_url
+  		redirect_to :back
   	end
   end
 

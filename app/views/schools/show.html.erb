@@ -1,3 +1,9 @@
+<div class="approved">
+  <% if !@school.approved? %>
+    <p> The school will be available for the general public to see once the admin approves it. Thanks for using schools.com </p>
+    <p>By the way, since it isn't approved, you can delete it if you don't like it or edit it better</p>
+  <% end %>
+</div>
 <p class = "show_schools">
    <h1 class="school_name"><%= @school.school_name %></h1>
     <% if !@school.picture_url.nil? %>
@@ -19,7 +25,11 @@
   <% end %>
 <% end %>
 
-
+<% if !logged_in? %>
+  <% if !@school.approved? %>
+    <%= link_to "Edit", edit_school_path %>
+  <% end %>
+<% end %>
 
    <div class="container marketing">
      <div class="row row-centered">

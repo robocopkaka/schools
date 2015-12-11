@@ -22,7 +22,10 @@
 			<%= f.text_field :website, class: 'form-control' %>
 
 			<%= f.label :category %>
-			<%= f.select(:category, ["Federal", "State", "Private"])  %> <!-- f.select is used to create dropdown lists and has many ways of passing values -->
+			<%= f.select(:category, ["Creche", "Primary", "Secondary", "Primary&Secondary", "University"], class: 'btn btn-info')  %> <!-- f.select is used to create dropdown lists and has many ways of passing values -->
+
+			<%= f.label :classification %>
+			<%= f.select(:category, ["Federal", "State", "Private"])  %>
 
 			<span class = "picture">
 				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>

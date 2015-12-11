@@ -1,6 +1,6 @@
 require 'will_paginate/array'
 class SchoolsController < ApplicationController
-  before_action :admin_user, only: [:destroy, :edit, :update]
+  before_action :admin_user, only: [:destroy]
   def new
   	@school = School.new
   end
@@ -10,7 +10,7 @@ class SchoolsController < ApplicationController
 
     if @school.save
       flash[:success] = "School saved successfully"
-      redirect_to root_url
+      redirect_to school_path(@school)
     else
       render 'new'
     end
@@ -31,9 +31,10 @@ class SchoolsController < ApplicationController
     end
   end
 
+  # display pages for schools and for getting schools of the same category that are within 10 miles of the school
   def show
      @school = School.find_by(id: params[:id])
-     @schools = School.near([@school.latitude,@school.longitude], 10).where("id != ?", @school.id).limit(4)
+     @schools = School.near([@school.latitude,@school.longitude], 10).where("id != ? AND category = ?", @school.id, @school.category).limit(4)
   end
 
   def schools_near_you
